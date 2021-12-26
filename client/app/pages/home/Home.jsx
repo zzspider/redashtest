@@ -78,10 +78,10 @@ export default function Home() {
         {includes(messages, "email-not-verified") && <EmailNotVerifiedAlert />}
         <DynamicComponent name="Home.EmptyState">
           <EmptyState
-            header="Welcome to Redash 👋"
-            description="Connect to any data source, easily visualize and share your data"
+            header="欢迎开始使用"
+            description="数据赋能业务，发掘价值只在抬手之间，现在就设置数据源，开始数据探索"
             illustration="dashboard"
-            helpMessage={<EmptyStateHelpMessage helpTriggerType="GETTING_STARTED" />}
+            helpMessage="需要更多帮助，请联系公司支持,电话:400 111 2222"
             showDashboardStep
             showInviteStep
             onboardingMode
@@ -89,7 +89,6 @@ export default function Home() {
         </DynamicComponent>
         <DynamicComponent name="HomeExtra" />
         <DashboardAndQueryFavoritesList />
-        <BeaconConsent />
       </div>
     </div>
   );

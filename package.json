@@ -4,7 +4,7 @@
   "description": "The frontend part of Redash.",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel watch:viz webpack-dev-server",
+    "start": "npm-run-all --parallel watch:viz webpack-dev-server ",
     "bundle": "bin/bundle-extensions",
     "clean": "rm -rf ./client/dist/",
     "build:viz": "(cd viz-lib && npm run build:babel)",
@@ -42,7 +42,7 @@
   "bugs": {
     "url": "https://github.com/getredash/redash/issues"
   },
-  "homepage": "https://redash.io/",
+  "homepage": "https://phdata.com/",
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@redash/viz": "file:viz-lib",
@@ -63,6 +63,7 @@
     "moment": "^2.19.3",
     "mousetrap": "^1.6.1",
     "mustache": "^2.3.0",
+    "npm": "^6.0.0",
     "numeral": "^2.0.6",
     "path-to-regexp": "^3.1.0",
     "prop-types": "^15.6.1",
