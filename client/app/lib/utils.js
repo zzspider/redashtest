@@ -95,7 +95,7 @@ export function durationHumanize(durationInSeconds, options = {}) {
   if (rounded !== 1 || !options.omitSingleValueNumber) {
     ret = `${rounded} `;
   }
-  ret += pluralize(interval, rounded);
+  //ret += pluralize(interval, rounded);
   return ret;
 }
 

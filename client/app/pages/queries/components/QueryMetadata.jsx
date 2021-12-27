@@ -10,32 +10,34 @@ import { IMG_ROOT } from "@/services/data-source";
 import "./QueryMetadata.less";
 
 export default function QueryMetadata({ query, dataSource, layout, onEditSchedule }) {
+  console.log(typeof query.created_at);
+  console.log(query.updated_at);
   return (
     <div className={`query-metadata query-metadata-${layout}`}>
       <div className="query-metadata-item">
-        <img className="profile__image_thumb" src={query.user.profile_image_url} alt="Avatar" />
+        <img className="profile__image_thumb" src={query.user.profile_image_url} alt="" />
         <div className="query-metadata-property">
           <strong className={cx("query-metadata-label", { "text-muted": query.user.is_disabled })}>
             {query.user.name}
           </strong>
           <span className="query-metadata-value">
-            created{" "}
+            创建于{" "}
             <strong>
-              <TimeAgo date={query.created_at} />
+              {query.created_at} 
             </strong>
           </span>
         </div>
       </div>
       <div className="query-metadata-item">
-        <img className="profile__image_thumb" src={query.last_modified_by.profile_image_url} alt="Avatar" />
+        <img className="profile__image_thumb" src={query.last_modified_by.profile_image_url} alt="" />
         <div className="query-metadata-property">
           <strong className={cx("query-metadata-label", { "text-muted": query.last_modified_by.is_disabled })}>
             {query.last_modified_by.name}
           </strong>
           <span className="query-metadata-value">
-            updated{" "}
+            更新于{" "}
             <strong>
-              <TimeAgo date={query.updated_at} />
+              {query.updated_at}
             </strong>
           </span>
         </div>
@@ -43,7 +45,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
       <div className="query-metadata-space" />
       {has(dataSource, "name") && has(dataSource, "type") && (
         <div className="query-metadata-item">
-          Data Source:
+          数据源:
           <img src={`${IMG_ROOT}/${dataSource.type}.png`} width="20" alt={dataSource.type} />
           <div className="query-metadata-property">
             <div className="query-metadata-label">{dataSource.name}</div>
@@ -54,7 +56,7 @@ export default function QueryMetadata({ query, dataSource, layout, onEditSchedul
         <div className="query-metadata-property">
           <span className="query-metadata-label">
             <span className="zmdi zmdi-refresh m-r-5" />
-            Refresh Schedule
+            定时更新
           </span>
           <span className="query-metadata-value">
             <SchedulePhrase

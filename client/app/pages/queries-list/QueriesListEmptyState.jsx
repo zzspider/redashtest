@@ -10,28 +10,28 @@ import HelpTrigger from "@/components/HelpTrigger";
 
 export default function QueriesListEmptyState({ page, searchTerm, selectedTags }) {
   if (searchTerm !== "") {
-    return <BigMessage message="Sorry, we couldn't find anything." icon="fa-search" />;
+    return <BigMessage message="未找到任何匹配的查询" icon="fa-search" />;
   }
   if (selectedTags.length > 0) {
     return <NoTaggedObjectsFound objectType="queries" tags={selectedTags} />;
   }
   switch (page) {
     case "favorites":
-      return <BigMessage message="Mark queries as Favorite to list them here." icon="fa-star" />;
+      return <BigMessage message="这里显示你收藏的所有查询" icon="fa-star" />;
     case "archive":
-      return <BigMessage message="Archived queries will be listed here." icon="fa-archive" />;
+      return <BigMessage message="这里显示所有归档的查询" icon="fa-archive" />;
     case "my":
       const my_msg = currentUser.hasPermission("create_query") ? (
         <span>
           <Link.Button href="queries/new" type="primary" size="small">
-            Create your first query!
+           创建你的第一个查询吧! 
           </Link.Button>{" "}
           <HelpTrigger className="f-13" type="QUERIES" showTooltip={false}>
-            Need help?
+           需要帮助 
           </HelpTrigger>
         </span>
       ) : (
-        <span>Sorry, we couldn't find anything.</span>
+        <span>未找到任何匹配项</span>
       );
       return <BigMessage icon="fa-search">{my_msg}</BigMessage>;
     default:
@@ -40,7 +40,7 @@ export default function QueriesListEmptyState({ page, searchTerm, selectedTags }
           <EmptyState
             icon="fa fa-code"
             illustration="query"
-            description="Getting the data from your datasources."
+            description="从数据源获取数据"
             helpMessage={<EmptyStateHelpMessage helpTriggerType="QUERIES" />}
           />
         </DynamicComponent>

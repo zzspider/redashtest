@@ -17,26 +17,26 @@ export interface DashboardListEmptyStateProps {
 
 export default function DashboardListEmptyState({ page, searchTerm, selectedTags }: DashboardListEmptyStateProps) {
   if (searchTerm !== "") {
-    return <BigMessage message="Sorry, we couldn't find anything." icon="fa-search" />;
+    return <BigMessage message="未找到任何匹配的看板" icon="fa-search" />;
   }
   if (selectedTags.length > 0) {
     return <NoTaggedObjectsFound objectType="dashboards" tags={selectedTags} />;
   }
   switch (page) {
     case "favorites":
-      return <BigMessage message="Mark dashboards as Favorite to list them here." icon="fa-star" />;
+      return <BigMessage message="这里会显示所有你收藏的看板" icon="fa-star" />;
     case "my":
       const my_msg = currentUser.hasPermission("create_dashboard") ? (
         <span>
           <Button type="primary" size="small" onClick={() => CreateDashboardDialog.showModal()}>
-            Create your first dashboard!
+            创建一个你的数据看板吧!
           </Button>{" "}
           <HelpTrigger className="f-14" type="DASHBOARDS" showTooltip={false}>
-            Need help?
+            需要帮助
           </HelpTrigger>
         </span>
       ) : (
-        <span>Sorry, we couldn't find anything.</span>
+        <span>未找到任何匹配项.</span>
       );
       return <BigMessage icon="fa-search">{my_msg}</BigMessage>;
     default:

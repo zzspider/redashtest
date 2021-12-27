@@ -29,19 +29,19 @@ const sidebarMenu = [
   {
     key: "all",
     href: "dashboards",
-    title: "All Dashboards",
+    title: "全部看板",
     icon: () => <Sidebar.MenuIcon icon="zmdi zmdi-view-quilt" />,
   },
   {
     key: "my",
     href: "dashboards/my",
-    title: "My Dashboards",
+    title: "我的看板",
     icon: () => <Sidebar.ProfileImage user={currentUser} />,
   },
   {
     key: "favorites",
     href: "dashboards/favorites",
-    title: "Favorites",
+    title: "收藏的看板",
     icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
   },
 ];
@@ -63,14 +63,14 @@ const listColumns = [
       </React.Fragment>
     ),
     {
-      title: "Name",
+      title: "名称",
       field: "name",
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "创建者", width: "1%" }),
   Columns.dateTime.sortable({
-    title: "Created At",
+    title: "创建时间",
     field: "created_at",
     width: "1%",
   }),
@@ -97,7 +97,7 @@ function DashboardList({ controller }) {
             currentUser.hasPermission("create_dashboard") ? (
               <Button block type="primary" onClick={() => CreateDashboardDialog.showModal()}>
                 <i className="fa fa-plus m-r-5" aria-hidden="true" />
-                New Dashboard
+                新建数据看板
               </Button>
             ) : null
           }
@@ -105,8 +105,8 @@ function DashboardList({ controller }) {
         <Layout>
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
-              placeholder="Search Dashboards..."
-              label="Search dashboards"
+              placeholder="查找..."
+              label="查找..."
               value={controller.searchTerm}
               onChange={controller.updateSearch}
             />
@@ -180,7 +180,7 @@ routes.register(
   "Dashboards.List",
   routeWithUserSession({
     path: "/dashboards",
-    title: "Dashboards",
+    title: "数据看板",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -188,7 +188,7 @@ routes.register(
   "Dashboards.Favorites",
   routeWithUserSession({
     path: "/dashboards/favorites",
-    title: "Favorite Dashboards",
+    title: "收藏的看板",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="favorites" />,
   })
 );
@@ -196,7 +196,7 @@ routes.register(
   "Dashboards.My",
   routeWithUserSession({
     path: "/dashboards/my",
-    title: "My Dashboards",
+    title: "我的看板",
     render: pageProps => <DashboardListPage {...pageProps} currentPage="my" />,
   })
 );
